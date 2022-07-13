@@ -74,8 +74,4 @@ char *fill_long_oct_array(char *bnr, char *oct);
 char *fill_short_oct_array(char *bnr, char *oct);
 char *fill_hex_array(char *bnr, char *hex, int isupp, int limit);
 
-<<<<<<< HEAD
 #endif /* ALX-SCHOOL*/
-=======
-#endif
->>>>>>> a9b7b0612e5c38e0aab9b06cdc58c37e28d767cb
