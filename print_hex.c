@@ -1,69 +1,43 @@
 #include "main.h"
 /**
-* print_hex - function that prints an unsigned int in hexadecimal
-* @n: unsigned to be printed
-* @c: case of printing (0 = lower, 1 = upper)
-* Descriptions: prints unsigned in hexadecimal with _putchar
-* Return: size the output
-*/
-int print_hex(unsigned int n, unsigned int c)
+ * print_hex - prints a decimal in hexadecimal
+ * @arguments: input string
+ * @buf: buffer pointer
+ * @ibuf: index for buffer pointer
+ * Return: number of chars printed
+ */
+int print_hex(va_list arguments, char *buf, unsigned int ibuf)
 {
-	unsigned int len, powten, j, digit, num;
-	int count = 0;
-	char diff;
+	int int_input, i, isnegative, count, first_digit;
+	char *hexadecimal, *binary;
 
-	if (n != 0)
+	int_input = va_arg(arguments, int);
+	isnegative = 0;
+	if (int_input == 0)
 	{
-		num = n;
-		len = 0;
-		if (c)
-			diff = 'A' - ':';
-		else
-			diff = 'a' - ':';
-		while (num != 0)
-		{
-			num /= 16;
-			len++;
-		}
-		powten = 1;
-		for (j = 1; j <= len - 1; j++)
-			powten *= 16;
-		for (j = 1; j <= len; j++)
-		{
-			digit = n / powten;
-			if (digit < 10)
-				_putchar(digit + '0');
-			else
-				_putchar(digit + '0' + diff);
-			count++;
-			n -= digit * powten;
-			powten /= 16;
-		}
-	}
-	else
-	{
-		_putchar('0');
+		ibuf = handl_buf(buf, '0', ibuf);
 		return (1);
 	}
+	if (int_input < 0)
+	{
+		int_input = (int_input * -1) - 1;
+		isnegative = 1;
+	}
+	binary = malloc(sizeof(char) * (32 + 1));
+	binary = fill_binary_array(binary, int_input, isnegative, 32);
+	hexadecimal = malloc(sizeof(char) * (8 + 1));
+	hexadecimal = fill_hex_array(binary, hexadecimal, 0, 8);
+	for (first_digit = i = count = 0; hexadecimal[i]; i++)
+	{
+		if (hexadecimal[i] != '0' && first_digit == 0)
+			first_digit = 1;
+		if (first_digit)
+		{
+			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
+			count++;
+		}
+	}
+	free(binary);
+	free(hexadecimal);
 	return (count);
-}
-/**
-* print_x - takes an unsigned int an prints it in lowercase hex
-* @x: unsigned int to print
-* Descriptions: prints in lowercase hex with _putchar
-* Return: size of the output
-*/
-int print_x(va_list x)
-{
-	return (print_hex(va_arg(x, unsigned int), 0));
-}
-/**
-* print_X - takes an unsigned int an prints it in uppercase hex
-* @X: unsigned int to print
-* Descriptions: prints in uppercase hex with _putchar
-* Return: size of the output
-*/
-int print_X(va_list X)
-{
-	return (print_hex(va_arg(X, unsigned int), 1));
 }
