@@ -112,11 +112,11 @@ int main(void)
 
 	int length;
 
-	_printf(''%s'', ''Hello, Holberton!'')
+	_printf(''%s'', ''Hello, Alx!'')
 
-	_printf(''Hello Holberton! contains %d characters'', length);
+	_printf(''Hello Alx! contains %d characters'', length);
 
-	length = _printf(''Hello Holberton!'');
+	length = _printf(''Hello Alx!'');
 
 	return (0);
 
