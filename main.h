@@ -2,25 +2,9 @@
 #define _MAIN_H_
 
 #include <stdarg.h>
-<<<<<<< HEAD
-int _putchar(char c);
-int _printf(const char *format, ...);
-int print_char(va_list c);
-int print_string(va_list s);
-int print_int(va_list i);
-int print_dec(va_list d);
-int print_rev(va_list r);
-int print_bin(va_list b);
-int print_unsig(va_list u);
-int print_octal(va_list o);
-int print_x(va_list x);
-int print_X(va_list X);
-int print_rot13(va_list R);
-=======
 #include <unistd.h>
 #include <stdlib.h>
 
->>>>>>> a9b7b0612e5c38e0aab9b06cdc58c37e28d767cb
 /**
  * struct print - struct for printer functions
  * @type_arg: identifier
@@ -35,6 +19,7 @@ typedef struct print
 	int (*f)(va_list, char *, unsigned int);
 } print_t;
 
+int _putchar(char c);
 int _printf(const char *format, ...);
 int print_prg(va_list __attribute__((unused)), char *, unsigned int);
 int print_chr(va_list arguments, char *buf, unsigned int ibuf);
@@ -74,4 +59,4 @@ char *fill_long_oct_array(char *bnr, char *oct);
 char *fill_short_oct_array(char *bnr, char *oct);
 char *fill_hex_array(char *bnr, char *hex, int isupp, int limit);
 
-#endif /* ALX-SCHOOL*/
+#endif
