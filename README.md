@@ -1,1 +1,1 @@
-# Printf team's project.
+ Printf project.
